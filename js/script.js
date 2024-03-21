@@ -36,3 +36,27 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+//creo variabile elemento selezionato
+let activeImage = 0;
+
+//seleziono i contenitori delle immagini
+const mainContentContainer = document.querySelector('.main-content-container');
+const thumbnailContainer = document.querySelector('.thumbnail-container');
+
+//stampo le immagini e i thumbnail
+images.forEach((game) => {
+    const newImage = `
+        <div class="image">
+            <img src="${game.image}" alt="">               
+        </div> 
+    `;
+    console.log(newImage)
+    mainContentContainer.innerHTML += newImage;
+    const newThumbnail = `
+        <div class="image">
+            <img src="${game.image}" alt="">               
+        </div> 
+    `;
+    thumbnailContainer.innerHTML += newThumbnail;
+});
