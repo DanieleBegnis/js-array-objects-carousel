@@ -37,8 +37,7 @@ const images = [
     }
 ];
 
-//creo variabile elemento selezionato
-let activeImage = 0;
+
 
 //seleziono i contenitori delle immagini
 const mainContentContainer = document.querySelector('.main-content-container');
@@ -54,9 +53,29 @@ images.forEach((game) => {
     console.log(newImage)
     mainContentContainer.innerHTML += newImage;
     const newThumbnail = `
-        <div class="image">
+        <div class="image thumbnail-image">
             <img src="${game.image}" alt="">               
         </div> 
     `;
     thumbnailContainer.innerHTML += newThumbnail;
+});
+
+//do classe active(per mostrare l'immagine) alle immagini
+
+//creo variabile elemento selezionato
+let activeImage = 0;
+//prendo immagine che ha indice active item e aggiungo classe active
+const allImages = document.querySelectorAll('.image');
+allImages[activeImage].classList.add('active');
+const allThumbnails = document.querySelectorAll('.thumbnail-image');
+allThumbnails[activeImage].classList.add('active');
+
+//do classe active con le frecce
+const upArrow =document.querySelector('fa-arrow-up');
+upArrow.addEventListener('click', function() {
+    document.querySelector('.image.active').classList.remove('active');
+    document.querySelector('.thumbnail-image.active').classList.remove('active');
+    activeImage++;
+    allImages[activeImage].classList.add('active');
+    allThumbnails[activeImage].classList.add('active');
 });
