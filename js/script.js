@@ -59,6 +59,7 @@ images.forEach((game) => {
         </div>    
     `;
     subtitleContainer.innerHTML += newSubtitle;
+    console.log(subtitleContainer)
     const newThumbnail = `
         <div class="image thumbnail-image">
             <img src="${game.image}" alt="">               
@@ -82,7 +83,11 @@ const upArrow =document.querySelector('.fa-arrow-up');
 upArrow.addEventListener('click', function() {
     document.querySelector('.image.active').classList.remove('active');
     document.querySelector('.thumbnail-image.active').classList.remove('active');
-    activeImage++;
+    if(activeImage < allImages.length - 1) {
+        activeImage++;
+    } else {
+        activeImage = 0;
+    }
     allImages[activeImage].classList.add('active');
     allThumbnails[activeImage].classList.add('active');
 });
@@ -90,8 +95,13 @@ upArrow.addEventListener('click', function() {
 const downArrow = document.querySelector('.fa-arrow-down');
 downArrow.addEventListener('click', function() {
     document.querySelector('.image.active').classList.remove('active');
-    document.querySelector('.thumbnail-image.active').classList.remove('active');
-    activeImage--;
+    document.querySelector('.thumbnail-image.active').classList.remove('.active');
+    if(activeImage > 0) {
+        activeImage--;
+    } else {
+        activeImage = allImages.length - 1;
+    }
     allImages[activeImage].classList.add('active');
-    allThumbnails[activeImage].classList.add('active');
+    allThumbnails[activeImage].classList.add('.active');
 });
+
