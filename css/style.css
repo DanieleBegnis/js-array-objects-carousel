@@ -53,12 +53,14 @@ height: 500px;
     opacity: 1;
 }
 
-.subtitle {
+.subtitle-container {
     position: absolute;
     bottom: 12px;
     right: 20px;
     text-align: right;
     color: white;
+    z-index: 4
+    ;
 }
 
 .arrow {

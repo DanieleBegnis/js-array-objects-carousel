@@ -42,6 +42,7 @@ const images = [
 //seleziono i contenitori delle immagini
 const mainContentContainer = document.querySelector('.main-content-container');
 const thumbnailContainer = document.querySelector('.thumbnail-container');
+const subtitleContainer = document.querySelector('.subtitle-container');
 
 //stampo le immagini e i thumbnail
 images.forEach((game) => {
@@ -50,8 +51,14 @@ images.forEach((game) => {
             <img src="${game.image}" alt="">               
         </div> 
     `;
-    console.log(newImage)
     mainContentContainer.innerHTML += newImage;
+    const newSubtitle = `
+        <div class="subtitle">
+            <h3>${game.title}</h3> 
+            <p>${game.text}</p> 
+        </div>    
+    `;
+    subtitleContainer.innerHTML += newSubtitle;
     const newThumbnail = `
         <div class="image thumbnail-image">
             <img src="${game.image}" alt="">               
@@ -71,11 +78,20 @@ const allThumbnails = document.querySelectorAll('.thumbnail-image');
 allThumbnails[activeImage].classList.add('active');
 
 //do classe active con le frecce
-const upArrow =document.querySelector('fa-arrow-up');
+const upArrow =document.querySelector('.fa-arrow-up');
 upArrow.addEventListener('click', function() {
     document.querySelector('.image.active').classList.remove('active');
     document.querySelector('.thumbnail-image.active').classList.remove('active');
     activeImage++;
+    allImages[activeImage].classList.add('active');
+    allThumbnails[activeImage].classList.add('active');
+});
+
+const downArrow = document.querySelector('.fa-arrow-down');
+downArrow.addEventListener('click', function() {
+    document.querySelector('.image.active').classList.remove('active');
+    document.querySelector('.thumbnail-image.active').classList.remove('active');
+    activeImage--;
     allImages[activeImage].classList.add('active');
     allThumbnails[activeImage].classList.add('active');
 });
